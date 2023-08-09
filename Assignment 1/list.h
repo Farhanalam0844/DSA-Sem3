@@ -1,5 +1,5 @@
 #include "dnode.h"
-#pragma once
+#include<iostream>
 using namespace std;
 
 template<typename T>
@@ -259,5 +259,87 @@ public:
 		temp_f=temp_f->next;
 	}	   
 		   }	
+//		void swap(dnode<T>* f,dnode<T>* b){
+//			dnode<T>* temp;
+//			temp=f;
+//			f->next=b->next;
+//			f->prev=b->prev;
+//			b->next=temp->next;
+//			b->prev=temp->prev;
+//		}
+dnode<T>* swap_min_max(dnode<T>* H,dnode<T>* B) {
+	dnode<T>*  temp_f = H;
+	if (temp_f->next == NULL) exit(0);
+//	dnode<T>*  min = temp;
+	dnode<T>*  max = temp_f;
+//	dnode<T>*  temp_p = NULL;
+//	dnode<T>*  min_p = NULL;
+//	dnode<T>*  max_p = NULL;
+	while (temp_f != B) {
+		if (temp_f->data > max->data) {
+			max = temp_f;
+//			max_p = temp_p;
+		}
+//		if (temp->data < min->data) {
+//			min = temp;
+//			min_p = temp_p;
+//		}
+		temp_f = temp_f->next;
+//		temp = temp->next;
+
+	}
+	/*
+	node *t1;
+	node* t2;
+	t2 = max;
+	t1 = min;
+	min_p->next = max;
+	max->next = t1->next;
+	max_p->next = t1;
+	t1->next = max->next;
+	*/
+//	dnode<T>*  min_next = min->next;
+//	min->next = max->next;
+//	min->prev=max->pre
+//	max->next = min_next;
+//	min_p->next = max;
+//	max_p->next = min;
+	return max;
+}  
+void merge(list * s){
+	dnode<T>* temp=this->FRONT;
+	dnode<T>* temp2=s->FRONT;
+	while(temp->next!=NULL){
+		temp=temp->next;
+	}
+	temp->next=temp2;
+	this->sort();
+} 
+void sort() {
+	cout<<"Sort is under construction \n";
+       
+        dnode<T>* temp_f = FRONT;
+        dnode<T>* temp_b = BACK;
+
+        while (temp_f->next != NULL) {
+        dnode<T>* max=	swap_min_max(temp_f,temp_b);
+        temp_f=temp_f->next;
+        this->push_back(max->data);
+        
+		}
+		}
+//		while(temp_f!=NULL){
+//			temp_b=temp_f;
+//			while(temp_b!=NULL){
+//				if(temp_b->data>temp_b->next->data){
+//					swap(temp_b->next,temp_b);
+//					temp_b=temp_b->next;
+//				}
+//				temp_f=temp_f->next;
+//			}
+//		}
+//		
+//	}	   
 };
+
 
